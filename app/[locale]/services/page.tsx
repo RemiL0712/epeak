@@ -21,6 +21,14 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
                 <li key={point} className="rounded-2xl border border-white/8 bg-white/5 px-4 py-3">{point}</li>
               ))}
             </ul>
+            <div className="mt-6 border-t border-white/10 pt-6">
+              <p className="mb-3 text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">Typical deliverables</p>
+              <ul className="grid gap-3 text-sm text-slate-300">
+                {service.deliverables.map((item) => (
+                  <li key={item} className="rounded-2xl bg-[#0d4f8f]/25 px-4 py-3">{item}</li>
+                ))}
+              </ul>
+            </div>
           </article>
         ))}
       </div>

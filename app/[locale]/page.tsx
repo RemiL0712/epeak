@@ -24,10 +24,16 @@ export default async function HomePage({
               </h1>
               <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-300">{dictionary.heroText}</p>
               <div className="mt-8 flex flex-wrap gap-4">
-                <Link href={`/${locale}/contact`} className="rounded-full bg-[#f6cf84] px-6 py-4 font-semibold text-slate-950 transition hover:bg-[#ffdd9c]">
+                <Link
+                  href={`/${locale}/contact`}
+                  className="rounded-full bg-[#f6cf84] px-6 py-4 font-semibold text-slate-950 transition hover:bg-[#ffdd9c]"
+                >
                   {dictionary.heroPrimary}
                 </Link>
-                <Link href={`/${locale}/services`} className="rounded-full border border-white/15 px-6 py-4 font-semibold text-white transition hover:bg-white/10">
+                <Link
+                  href={`/${locale}/services`}
+                  className="rounded-full border border-white/15 px-6 py-4 font-semibold text-white transition hover:bg-white/10"
+                >
                   {dictionary.heroSecondary}
                 </Link>
               </div>
@@ -61,8 +67,32 @@ export default async function HomePage({
             </div>
           </Reveal>
           <Reveal delay={100}>
-            <p className="glass rounded-[32px] p-8 text-lg leading-8 text-slate-300">{dictionary.authorityText}</p>
+            <div className="glass rounded-[32px] p-8 text-lg leading-8 text-slate-300">{dictionary.authorityText}</div>
           </Reveal>
+        </div>
+      </section>
+
+      <section className="border-b border-white/10">
+        <div className="mx-auto max-w-7xl px-4 py-20 lg:px-8">
+          <Reveal>
+            <div className="mb-10 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+              <div>
+                <p className="text-sm font-semibold uppercase tracking-[0.22em] text-[#f6cf84]">Differentiators</p>
+                <h2 className="mt-4 text-4xl font-semibold tracking-[-0.04em] text-white md:text-5xl">{dictionary.differentiatorsTitle}</h2>
+              </div>
+            </div>
+          </Reveal>
+
+          <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+            {dictionary.differentiators.map((item, index) => (
+              <Reveal key={item} delay={index * 80}>
+                <article className="glass rounded-[28px] p-6">
+                  <p className="mb-4 text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">0{index + 1}</p>
+                  <p className="text-base leading-7 text-slate-200">{item}</p>
+                </article>
+              </Reveal>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -104,6 +134,30 @@ export default async function HomePage({
           <Reveal>
             <div className="mb-10 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
               <div>
+                <p className="text-sm font-semibold uppercase tracking-[0.22em] text-[#f6cf84]">Industries</p>
+                <h2 className="mt-4 text-4xl font-semibold tracking-[-0.04em] text-white md:text-5xl">{dictionary.industriesTitle}</h2>
+              </div>
+            </div>
+          </Reveal>
+
+          <div className="grid gap-5 md:grid-cols-2">
+            {dictionary.industries.map((item, index) => (
+              <Reveal key={item} delay={index * 90}>
+                <article className="glass rounded-[28px] p-7">
+                  <p className="mb-3 text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">Focus 0{index + 1}</p>
+                  <p className="text-lg leading-8 text-slate-200">{item}</p>
+                </article>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="border-b border-white/10">
+        <div className="mx-auto max-w-7xl px-4 py-20 lg:px-8">
+          <Reveal>
+            <div className="mb-10 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+              <div>
                 <p className="text-sm font-semibold uppercase tracking-[0.22em] text-[#f6cf84]">Cases</p>
                 <h2 className="mt-4 text-4xl font-semibold tracking-[-0.04em] text-white md:text-5xl">{dictionary.casesTitle}</h2>
               </div>
@@ -118,6 +172,14 @@ export default async function HomePage({
                   <p className={`text-sm font-semibold uppercase tracking-[0.2em] ${index === 0 ? "text-[#f6cf84]" : "text-slate-500"}`}>{caseStudy.label}</p>
                   <h3 className="mt-5 text-3xl font-semibold tracking-[-0.04em] text-white">{caseStudy.title}</h3>
                   <p className="mt-5 text-base leading-7 text-slate-200">{caseStudy.summary}</p>
+                  <div className="mt-6 grid gap-3 text-sm text-slate-200">
+                    <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
+                      <span className="font-semibold text-white">Challenge:</span> {caseStudy.challenge}
+                    </div>
+                    <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
+                      <span className="font-semibold text-white">Solution:</span> {caseStudy.solution}
+                    </div>
+                  </div>
                   <div className="mt-8 grid gap-3">
                     {caseStudy.metrics.map((metric) => (
                       <div key={metric} className="rounded-2xl border border-white/10 bg-white/5 px-4 py-4 text-sm font-medium text-white">
@@ -158,6 +220,34 @@ export default async function HomePage({
           <Reveal>
             <div className="mb-10 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
               <div>
+                <p className="text-sm font-semibold uppercase tracking-[0.22em] text-[#f6cf84]">Reviews</p>
+                <h2 className="mt-4 text-4xl font-semibold tracking-[-0.04em] text-white md:text-5xl">{dictionary.reviewsTitle}</h2>
+              </div>
+              <p className="max-w-2xl text-lg leading-8 text-slate-300">{dictionary.reviewsIntro}</p>
+            </div>
+          </Reveal>
+
+          <div className="grid gap-5 md:grid-cols-3">
+            {dictionary.testimonials.map((item, index) => (
+              <Reveal key={item.quote} delay={index * 90}>
+                <article className="glass rounded-[30px] p-7">
+                  <p className="text-lg leading-8 text-slate-100">&ldquo;{item.quote}&rdquo;</p>
+                  <div className="mt-6 border-t border-white/10 pt-5">
+                    <p className="font-semibold text-white">{item.name}</p>
+                    <p className="mt-1 text-sm text-slate-400">{item.role}</p>
+                  </div>
+                </article>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="border-b border-white/10">
+        <div className="mx-auto max-w-7xl px-4 py-20 lg:px-8">
+          <Reveal>
+            <div className="mb-10 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+              <div>
                 <p className="text-sm font-semibold uppercase tracking-[0.22em] text-[#f6cf84]">Insights</p>
                 <h2 className="mt-4 text-4xl font-semibold tracking-[-0.04em] text-white md:text-5xl">{dictionary.insightsTitle}</h2>
               </div>
@@ -173,6 +263,54 @@ export default async function HomePage({
                   <h3 className="mt-5 text-2xl font-semibold tracking-[-0.03em] text-white">{article.title}</h3>
                   <p className="mt-4 text-base leading-7 text-slate-300">{article.summary}</p>
                 </article>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="border-b border-white/10">
+        <div className="mx-auto max-w-7xl px-4 py-20 lg:px-8">
+          <Reveal>
+            <div className="mb-10 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+              <div>
+                <p className="text-sm font-semibold uppercase tracking-[0.22em] text-[#f6cf84]">Resources</p>
+                <h2 className="mt-4 text-4xl font-semibold tracking-[-0.04em] text-white md:text-5xl">{dictionary.resourcesTitle}</h2>
+              </div>
+              <p className="max-w-2xl text-lg leading-8 text-slate-300">{dictionary.resourcesIntro}</p>
+            </div>
+          </Reveal>
+
+          <div className="grid gap-5 md:grid-cols-3">
+            {dictionary.resources.map((resource, index) => (
+              <Reveal key={resource.title} delay={index * 90}>
+                <article className="glass rounded-[30px] p-7">
+                  <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">{resource.format}</p>
+                  <h3 className="mt-5 text-2xl font-semibold tracking-[-0.03em] text-white">{resource.title}</h3>
+                  <p className="mt-4 text-base leading-7 text-slate-300">{resource.summary}</p>
+                </article>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="border-b border-white/10">
+        <div className="mx-auto max-w-7xl px-4 py-20 lg:px-8">
+          <Reveal>
+            <div className="mb-10 max-w-4xl">
+              <p className="text-sm font-semibold uppercase tracking-[0.22em] text-[#f6cf84]">FAQ</p>
+              <h2 className="mt-4 text-4xl font-semibold tracking-[-0.04em] text-white md:text-5xl">{dictionary.faqTitle}</h2>
+            </div>
+          </Reveal>
+
+          <div className="grid gap-4">
+            {dictionary.faq.map((item, index) => (
+              <Reveal key={item.q} delay={index * 70}>
+                <details className="glass rounded-[28px] p-6">
+                  <summary className="cursor-pointer text-lg font-semibold text-white">{item.q}</summary>
+                  <p className="mt-4 max-w-4xl text-base leading-7 text-slate-300">{item.a}</p>
+                </details>
               </Reveal>
             ))}
           </div>
